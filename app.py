@@ -24,64 +24,99 @@ def download_nltk_data():
 
 download_nltk_data()
 
-st.set_page_config(page_title="GATEWAYS-2025 Dashboard", layout="wide", page_icon="🎓")
+st.set_page_config(page_title="GATEWAYS-2025 Dashboard", layout="wide", page_icon="�")
 
 # ── Custom CSS ──────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    .main { background-color: #0f1117; }
+    .main { background: linear-gradient(135deg, #fff8e1 0%, #fff3c4 100%); }
     .block-container { padding-top: 1rem; }
     .metric-card {
-        background: linear-gradient(135deg, #1e3a5f, #0d2137);
-        border-radius: 12px;
+        background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        border-radius: 15px;
         padding: 1.2rem 1.5rem;
-        border-left: 4px solid #4da6ff;
+        border-left: 4px solid #ff6b35;
         margin-bottom: 0.5rem;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
     }
     .metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(77, 166, 255, 0.2);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
     }
-    .metric-value { font-size: 2rem; font-weight: 800; color: #4da6ff; }
-    .metric-label { font-size: 0.85rem; color: #aab4c4; text-transform: uppercase; letter-spacing: 1px; }
+    .metric-value { font-size: 2rem; font-weight: 800; color: #ff6b35; }
+    .metric-label { font-size: 0.85rem; color: #e65100; text-transform: uppercase; letter-spacing: 1px; }
     .section-title {
-        font-size: 1.3rem; font-weight: 700; color: #e0e6f0;
-        border-bottom: 2px solid #4da6ff; padding-bottom: 6px; margin-bottom: 1rem;
+        font-size: 1.3rem; font-weight: 700; color: #2e7d32;
+        border-bottom: 3px solid #ff6b35; padding-bottom: 6px; margin-bottom: 1rem;
     }
     .welcome-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
+        background: linear-gradient(135deg, #ffd54f 0%, #ffb74d 50%, #ff8a65 100%);
+        border-radius: 20px;
         padding: 2rem;
         margin-bottom: 2rem;
         text-align: center;
         color: white;
+        box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+        animation: float 3s ease-in-out infinite;
     }
-    .welcome-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .welcome-subtitle { font-size: 1.1rem; opacity: 0.9; }
+    .welcome-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    .welcome-subtitle { font-size: 1.1rem; opacity: 0.9; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
     .filter-section {
-        background: rgba(255,255,255,0.05);
-        border-radius: 10px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 15px;
         padding: 1rem;
         margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
     }
     .chart-container {
-        background: rgba(255,255,255,0.02);
-        border-radius: 10px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 15px;
         padding: 1rem;
         margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
     }
-    div[data-testid="stSidebar"] { background: #0d1b2a; }
-    .stTabs [data-baseweb="tab-list"] { gap: 2px; }
+    div[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #fff3e0 0%, #ffe0b2 100%);
+        border-right: 3px solid #ff6b35;
+    }
+    .stTabs [data-baseweb="tab-list"] { gap: 4px; }
     .stTabs [data-baseweb="tab"] {
-        background-color: #1e3a5f;
-        border-radius: 4px 4px 0 0;
-        color: #aab4c4;
+        background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+        border-radius: 8px 8px 0 0;
+        color: #e65100;
+        border: 2px solid #ffcc80;
+        transition: all 0.3s ease;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        background: linear-gradient(135deg, #ffcc80, #ffb74d);
+        transform: translateY(-2px);
     }
     .stTabs [aria-selected="true"] {
-        background-color: #4da6ff !important;
+        background: linear-gradient(135deg, #ff6b35, #e65100) !important;
         color: white !important;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #fff3e0;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #ff6b35;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #e65100;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -96,7 +131,7 @@ def load_data():
 df = load_data()
 
 # ── Sidebar Filters ──────────────────────────────────────────────────────────
-st.sidebar.image("https://img.icons8.com/fluency/96/graduation-cap.png", width=80)
+st.sidebar.image("https://img.icons8.com/fluency/96/sun.png", width=80)
 st.sidebar.title("🎛️ GATEWAYS-2025")
 st.sidebar.markdown("---")
 
@@ -220,10 +255,10 @@ with tab1:
             ev_cnt = dff["Event Name"].value_counts().reset_index()
             ev_cnt.columns = ["Event", "Participants"]
             fig = px.bar(ev_cnt, x="Participants", y="Event", orientation="h",
-                         color="Participants", color_continuous_scale="Blues",
+                         color="Participants", color_continuous_scale="Sunset",
                          title="Participants per Event")
-            fig.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                              paper_bgcolor="#0f1117", font_color="#e0e6f0",
+            fig.update_layout(showlegend=False, plot_bgcolor="white",
+                              paper_bgcolor="white", font_color="#2e7d32",
                               coloraxis_showscale=False, height=380)
             st.plotly_chart(fig, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
@@ -234,10 +269,10 @@ with tab1:
             col_cnt = dff["College"].value_counts().head(10).reset_index()
             col_cnt.columns = ["College", "Participants"]
             fig2 = px.bar(col_cnt, x="Participants", y="College", orientation="h",
-                          color="Participants", color_continuous_scale="Teal",
+                          color="Participants", color_continuous_scale="Viridis",
                           title="Top 10 Colleges by Participation")
-            fig2.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                               paper_bgcolor="#0f1117", font_color="#e0e6f0",
+            fig2.update_layout(showlegend=False, plot_bgcolor="white",
+                               paper_bgcolor="white", font_color="#2e7d32",
                                coloraxis_showscale=False, height=380)
             st.plotly_chart(fig2, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
@@ -266,8 +301,8 @@ with tab1:
             fig4 = px.bar(rev, x="Event", y="Revenue (₹)",
                           color="Revenue (₹)", color_continuous_scale="Sunset",
                           title="Revenue Generated per Event (₹)")
-            fig4.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                               paper_bgcolor="#0f1117", font_color="#e0e6f0",
+            fig4.update_layout(showlegend=False, plot_bgcolor="white",
+                               paper_bgcolor="white", font_color="#2e7d32",
                                coloraxis_showscale=False, height=340,
                                xaxis_tickangle=-30)
             st.plotly_chart(fig4, use_container_width=True)
@@ -279,10 +314,10 @@ with tab1:
         top_colleges = dff["College"].value_counts().head(10).index.tolist()
         heat_df = dff[dff["College"].isin(top_colleges)]
         pivot = heat_df.groupby(["College","Event Name"]).size().unstack(fill_value=0)
-        fig5 = px.imshow(pivot, color_continuous_scale="Blues",
+        fig5 = px.imshow(pivot, color_continuous_scale="RdYlGn",
                          title="Participation Intensity (Top 10 Colleges)",
                          aspect="auto")
-        fig5.update_layout(paper_bgcolor="#0f1117", font_color="#e0e6f0", height=420)
+        fig5.update_layout(paper_bgcolor="white", font_color="#2e7d32", height=420)
         st.plotly_chart(fig5, use_container_width=True)
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -319,8 +354,8 @@ with tab2:
         )
         fig_map.update_geos(fitbounds="locations", visible=False)
         fig_map.update_layout(
-            paper_bgcolor="#0f1117", font_color="#e0e6f0",
-            geo_bgcolor="#0f1117", height=580,
+            paper_bgcolor="white", font_color="#2e7d32",
+            geo_bgcolor="white", height=580,
             margin={"r":0,"t":50,"l":0,"b":0}
         )
         st.plotly_chart(fig_map, use_container_width=True)
@@ -334,8 +369,8 @@ with tab2:
             title="Participants per State"
         )
         fig_state_bar.update_layout(
-            showlegend=False, plot_bgcolor="#0f1117",
-            paper_bgcolor="#0f1117", font_color="#e0e6f0",
+            showlegend=False, plot_bgcolor="white",
+            paper_bgcolor="white", font_color="#2e7d32",
             coloraxis_showscale=False, height=420
         )
         st.plotly_chart(fig_state_bar, use_container_width=True)
@@ -359,8 +394,8 @@ with tab3:
         fig_r = px.bar(rat_cnt, x="Rating", y="Count",
                        color="Count", color_continuous_scale="RdYlGn",
                        title="Rating Distribution (1–5)")
-        fig_r.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                             paper_bgcolor="#0f1117", font_color="#e0e6f0",
+        fig_r.update_layout(showlegend=False, plot_bgcolor="white",
+                             paper_bgcolor="white", font_color="#2e7d32",
                              coloraxis_showscale=False, height=360)
         st.plotly_chart(fig_r, use_container_width=True)
 
@@ -372,8 +407,8 @@ with tab3:
         fig_ar = px.bar(avg_rat, x="Event", y="Avg Rating",
                         color="Avg Rating", color_continuous_scale="RdYlGn",
                         range_color=[1,5], title="Average Rating per Event")
-        fig_ar.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                              paper_bgcolor="#0f1117", font_color="#e0e6f0",
+        fig_ar.update_layout(showlegend=False, plot_bgcolor="white",
+                              paper_bgcolor="white", font_color="#2e7d32",
                               coloraxis_showscale=False, height=360,
                               xaxis_tickangle=-30)
         st.plotly_chart(fig_ar, use_container_width=True)
@@ -429,8 +464,8 @@ with tab3:
     fig_wf = px.bar(top_words, x="Count", y="Word", orientation="h",
                     color="Count", color_continuous_scale="Bluered",
                     title="Top 20 Feedback Keywords (NLTK Processed)")
-    fig_wf.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                         paper_bgcolor="#0f1117", font_color="#e0e6f0",
+    fig_wf.update_layout(showlegend=False, plot_bgcolor="white",
+                         paper_bgcolor="white", font_color="#2e7d32",
                          coloraxis_showscale=False, height=500)
     st.plotly_chart(fig_wf, use_container_width=True)
     
@@ -444,8 +479,8 @@ with tab3:
             wordcloud_text = ' '.join(feedback_words)
             wordcloud = WordCloud(
                 width=800, height=400,
-                background_color='#0f1117',
-                colormap='Blues',
+                background_color='white',
+                colormap='viridis',
                 max_words=100
             ).generate(wordcloud_text)
             
@@ -453,8 +488,8 @@ with tab3:
             fig, ax = plt.subplots(figsize=(10, 5))
             ax.imshow(wordcloud, interpolation='bilinear')
             ax.axis('off')
-            ax.set_facecolor('#0f1117')
-            fig.patch.set_facecolor('#0f1117')
+            ax.set_facecolor('white')
+            fig.patch.set_facecolor('white')
             st.pyplot(fig)
             
         except ImportError:
@@ -514,12 +549,12 @@ with tab3:
                     color_discrete_map={
                         'Positive': '#4CAF50',
                         'Neutral': '#FFC107', 
-                        'Negative': '#F44336'
+                        'Negative': '#FF5722'
                     }
                 )
                 fig_sentiment.update_layout(
-                    paper_bgcolor="#0f1117", 
-                    font_color="#e0e6f0",
+                    paper_bgcolor="white", 
+                    font_color="#2e7d32",
                     height=350
                 )
                 st.plotly_chart(fig_sentiment, use_container_width=True)
@@ -536,13 +571,13 @@ with tab3:
                     color_discrete_map={
                         'Positive': '#4CAF50',
                         'Neutral': '#FFC107', 
-                        'Negative': '#F44336'
+                        'Negative': '#FF5722'
                     }
                 )
                 fig_rating_sentiment.update_layout(
-                    paper_bgcolor="#0f1117",
-                    plot_bgcolor="#0f1117", 
-                    font_color="#e0e6f0",
+                    paper_bgcolor="white",
+                    plot_bgcolor="white", 
+                    font_color="#2e7d32",
                     height=350,
                     xaxis_title="Rating",
                     yaxis_title="Count"
@@ -562,13 +597,13 @@ with tab3:
                 color_discrete_map={
                     'Positive': '#4CAF50',
                     'Neutral': '#FFC107', 
-                    'Negative': '#F44336'
+                    'Negative': '#FF5722'
                 }
             )
             fig_event_sentiment.update_layout(
-                paper_bgcolor="#0f1117",
-                plot_bgcolor="#0f1117", 
-                font_color="#e0e6f0",
+                paper_bgcolor="white",
+                plot_bgcolor="white", 
+                font_color="#2e7d32",
                 height=400,
                 xaxis_title="Event",
                 yaxis_title="Count"
@@ -605,7 +640,7 @@ with tab3:
                     title="Feedback Theme Share",
                     color_discrete_sequence=px.colors.qualitative.Set3)
     fig_fb.update_traces(textposition="inside", textinfo="percent+label")
-    fig_fb.update_layout(paper_bgcolor="#0f1117", font_color="#e0e6f0",
+    fig_fb.update_layout(paper_bgcolor="white", font_color="#2e7d32",
                          height=500, showlegend=True,
                          legend=dict(font=dict(size=10)))
     st.plotly_chart(fig_fb, use_container_width=True)
@@ -617,8 +652,8 @@ with tab3:
     fig_fbr = px.bar(avg_fb, x="Avg Rating", y="Feedback", orientation="h",
                      color="Avg Rating", color_continuous_scale="RdYlGn",
                      range_color=[1,5], title="Avg Rating per Feedback Theme")
-    fig_fbr.update_layout(showlegend=False, plot_bgcolor="#0f1117",
-                           paper_bgcolor="#0f1117", font_color="#e0e6f0",
+    fig_fbr.update_layout(showlegend=False, plot_bgcolor="white",
+                           paper_bgcolor="white", font_color="#2e7d32",
                            coloraxis_showscale=False, height=420)
     st.plotly_chart(fig_fbr, use_container_width=True)
 
