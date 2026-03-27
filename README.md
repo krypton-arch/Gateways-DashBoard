@@ -32,11 +32,12 @@ A comprehensive data visualization and analytics dashboard for the GATEWAYS-2025
 - **Dataset Overview**: Comprehensive statistics about the data structure
 
 ### User Interface
-- **Dark Theme**: Modern, professional dark interface optimized for data visualization
-- **Responsive Design**: Adaptive layout that works on different screen sizes
-- **Interactive Charts**: Hover effects, tooltips, and dynamic updates using Plotly
-- **Tabbed Navigation**: Organized content across four main sections
-- **Expandable Sections**: Collapsible content areas for better space management
+- **Cheerful Light Theme**: Warm orange, yellow, and green color palette with light backgrounds
+- **Animated Elements**: Floating welcome card and smooth hover transitions
+- **Interactive Design**: Hover effects on metric cards and tab animations
+- **Responsive Layout**: Adaptive design that works on different screen sizes
+- **Vibrant Charts**: Colorful visualizations with warm color schemes (Sunset, Viridis, RdYlGn)
+- **Custom Scrollbars**: Themed scrollbars matching the cheerful color scheme
 
 ## Installation
 
@@ -104,12 +105,12 @@ Use the sidebar controls to filter the entire dashboard:
 
 ## Data Visualization
 
-The dashboard includes multiple chart types:
-- Bar charts for participation and rating analysis
+The dashboard includes multiple chart types with a cheerful color palette:
+- Bar charts for participation and rating analysis (Sunset, Viridis color schemes)
 - Pie charts for event type and feedback theme distribution
-- Choropleth maps for geographic data
-- Heatmaps for college-event participation matrices
-- Sentiment analysis visualizations with color-coded results
+- Choropleth maps for geographic data with warm color gradients
+- Heatmaps for college-event participation matrices (RdYlGn color scheme)
+- Sentiment analysis visualizations with color-coded results (Green, Yellow, Orange)
 - Interactive tables with search and filter capabilities
 
 ## Sentiment Analysis
